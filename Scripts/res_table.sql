@@ -1,0 +1,72 @@
+-- res_table.sql
+DROP TABLE RES_TABLE CASCADE CONSTRAINTS;
+
+CREATE TABLE RES_TABLE (
+    table_id NUMBER(10) PRIMARY KEY,
+    table_no VARCHAR2(10) NOT NULL,
+    capacity NUMBER(2) NOT NULL,
+    status VARCHAR2(20) DEFAULT 'available' NOT NULL,
+    branch_id NUMBER(10) NOT NULL,
+    CONSTRAINT fk_branch
+        FOREIGN KEY (branch_id)
+        REFERENCES BRANCH(branch_id)
+        ON DELETE CASCADE,
+    CONSTRAINT chk_capacity CHECK (capacity > 0 AND capacity <= 20),
+    CONSTRAINT composite UNIQUE (table_no, branch_id)
+);
+
+INSERT INTO RES_TABLE VALUES (1, 'T01', 4, 'available', 1);
+INSERT INTO RES_TABLE VALUES (2, 'T02', 2, 'available', 1);
+INSERT INTO RES_TABLE VALUES (3, 'T03', 6, 'occupied', 1);
+INSERT INTO RES_TABLE VALUES (4, 'T04', 8, 'available', 1);
+INSERT INTO RES_TABLE VALUES (5, 'T01', 4, 'available', 2);
+INSERT INTO RES_TABLE VALUES (6, 'T02', 2, 'occupied', 2);
+INSERT INTO RES_TABLE VALUES (7, 'T03', 4, 'available', 2);
+INSERT INTO RES_TABLE VALUES (8, 'T01', 6, 'available', 3);
+INSERT INTO RES_TABLE VALUES (9, 'T02', 4, 'available', 3);
+INSERT INTO RES_TABLE VALUES (10, 'T03', 8, 'occupied', 3);
+INSERT INTO RES_TABLE VALUES (11, 'T01', 2, 'available', 4);
+INSERT INTO RES_TABLE VALUES (12, 'T02', 4, 'available', 4);
+INSERT INTO RES_TABLE VALUES (13, 'T03', 6, 'available', 4);
+INSERT INTO RES_TABLE VALUES (14, 'T01', 4, 'available', 5);
+INSERT INTO RES_TABLE VALUES (15, 'T02', 8, 'occupied', 5);
+INSERT INTO RES_TABLE VALUES (16, 'T03', 2, 'available', 5);
+INSERT INTO RES_TABLE VALUES (17, 'T01', 6, 'available', 6);
+INSERT INTO RES_TABLE VALUES (18, 'T02', 4, 'available', 6);
+INSERT INTO RES_TABLE VALUES (19, 'T03', 4, 'available', 6);
+INSERT INTO RES_TABLE VALUES (20, 'T01', 2, 'available', 7);
+INSERT INTO RES_TABLE VALUES (21, 'T02', 6, 'occupied', 7);
+INSERT INTO RES_TABLE VALUES (22, 'T03', 8, 'available', 7);
+INSERT INTO RES_TABLE VALUES (23, 'T01', 4, 'available', 8);
+INSERT INTO RES_TABLE VALUES (24, 'T02', 4, 'available', 8);
+INSERT INTO RES_TABLE VALUES (25, 'T03', 2, 'available', 8);
+INSERT INTO RES_TABLE VALUES (26, 'T01', 6, 'available', 9);
+INSERT INTO RES_TABLE VALUES (27, 'T02', 8, 'occupied', 9);
+INSERT INTO RES_TABLE VALUES (28, 'T01', 4, 'available', 10);
+INSERT INTO RES_TABLE VALUES (29, 'T02', 2, 'available', 10);
+INSERT INTO RES_TABLE VALUES (30, 'T03', 6, 'available', 10);
+INSERT INTO RES_TABLE VALUES (31, 'T01', 4, 'available', 11);
+INSERT INTO RES_TABLE VALUES (32, 'T02', 8, 'available', 11);
+INSERT INTO RES_TABLE VALUES (33, 'T01', 2, 'occupied', 12);
+INSERT INTO RES_TABLE VALUES (34, 'T02', 4, 'available', 12);
+INSERT INTO RES_TABLE VALUES (35, 'T03', 6, 'available', 12);
+INSERT INTO RES_TABLE VALUES (36, 'T01', 4, 'available', 13);
+INSERT INTO RES_TABLE VALUES (37, 'T02', 4, 'available', 13);
+INSERT INTO RES_TABLE VALUES (38, 'T01', 8, 'available', 14);
+INSERT INTO RES_TABLE VALUES (39, 'T02', 2, 'occupied', 14);
+INSERT INTO RES_TABLE VALUES (40, 'T01', 6, 'available', 15);
+INSERT INTO RES_TABLE VALUES (41, 'T02', 4, 'available', 15);
+INSERT INTO RES_TABLE VALUES (42, 'T03', 4, 'available', 15);
+INSERT INTO RES_TABLE VALUES (43, 'T01', 2, 'available', 16);
+INSERT INTO RES_TABLE VALUES (44, 'T02', 6, 'available', 16);
+INSERT INTO RES_TABLE VALUES (45, 'T01', 8, 'occupied', 17);
+INSERT INTO RES_TABLE VALUES (46, 'T02', 4, 'available', 17);
+INSERT INTO RES_TABLE VALUES (47, 'T01', 4, 'available', 18);
+INSERT INTO RES_TABLE VALUES (48, 'T02', 2, 'available', 18);
+INSERT INTO RES_TABLE VALUES (49, 'T03', 6, 'available', 18);
+INSERT INTO RES_TABLE VALUES (50, 'T01', 4, 'available', 19);
+INSERT INTO RES_TABLE VALUES (51, 'T02', 8, 'available', 19);
+INSERT INTO RES_TABLE VALUES (52, 'T01', 2, 'available', 20);
+INSERT INTO RES_TABLE VALUES (53, 'T02', 4, 'occupied', 20);
+
+COMMIT;
